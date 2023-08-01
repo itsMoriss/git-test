@@ -32,4 +32,41 @@ function animateCTAButton() {
     animateCTAButton();
     smoothScrollToSection();
   });
+
+// Fade-in animation for 'About' and 'Contact' sections when scrolling into view
+function fadeInSections() {
+    const aboutSection = document.getElementById('about');
+    const contactSection = document.getElementById('contact');
+  
+    function isElementInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+  
+    function addFadeInClassOnScroll() {
+      if (isElementInViewport(aboutSection)) {
+        aboutSection.classList.add('fade-in');
+        window.removeEventListener('scroll', addFadeInClassOnScroll);
+      }
+  
+      if (isElementInViewport(contactSection)) {
+        contactSection.classList.add('fade-in');
+        window.removeEventListener('scroll', addFadeInClassOnScroll);
+      }
+    }
+  
+    window.addEventListener('scroll', addFadeInClassOnScroll);
+  }
+  
+  // Call the functions once the DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    animateCTAButton();
+    smoothScrollToSection();
+    fadeInSections();
+  });
   

@@ -1,2 +1,2 @@
 # git-test-jitu
-Created a simple website to implement merging pull requests for several branches
+Created a simple website to implement Git Branches and PR Merge.
